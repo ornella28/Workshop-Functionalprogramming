@@ -24,10 +24,19 @@ public class Main {
         //1. Find active subscribers
         SubscriberFilter activeSubscriber = Subscriber::isActive;
         List<Subscriber> activeSubscribers = processor.findsubscribers(subscribers, activeSubscriber);
-        System.out.println("Active subscribers");
+        System.out.println("------Active subscribers------");
         for (Subscriber s: activeSubscribers){
             System.out.println(s);
         }
+
+        //2. Expiring subscribers (o or 1 month remaining)
+        SubscriberFilter expiringSubscribers = s -> s.getMonthsRemaining() <= 1;
+        List<Subscriber> expiringSubscriber = processor.findsubscribers(subscribers, expiringSubscribers);
+        System.out.println("------Expiring subscribers------");
+        for (Subscriber s: expiringSubscriber){
+            System.out.println(s);
+        }
+
 
 
 
