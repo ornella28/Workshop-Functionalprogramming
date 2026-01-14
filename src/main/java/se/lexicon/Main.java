@@ -46,6 +46,26 @@ public class Main {
         }
 
         //4. Subscriber by plan
+        SubscriberFilter basicPlanSubscribers = s -> s.getPlan() == Plan.Basic;
+        List<Subscriber> basicPlanSubscriber = processor.findsubscribers(subscribers, basicPlanSubscribers);
+        System.out.println("------Basic plan subscribers------");
+        for (Subscriber s: basicPlanSubscriber){
+            System.out.println(s);
+        }
+
+            SubscriberFilter proPlanSubscribers = s -> s.getPlan() == Plan.Pro;
+            List<Subscriber> proPlanSubscriber = processor.findsubscribers(subscribers, proPlanSubscribers);
+            System.out.println("------Pro plan subscribers------");
+            for (Subscriber s: proPlanSubscriber){
+                System.out.println(s);
+            }
+
+            SubscriberFilter freePlanSubscribers = s -> s.getPlan() == Plan.Free;
+            List<Subscriber> freePlanSubscriber = processor.findsubscribers(subscribers, freePlanSubscribers);
+            System.out.println("------Free plan subscribers------");
+            for (Subscriber s: freePlanSubscriber){
+                System.out.println(s);
+            }
 
 
 
