@@ -37,6 +37,17 @@ public class Main {
             System.out.println(s);
         }
 
+        //3. Active and expiring subscribers
+        SubscriberFilter activeAndExpiringSubscribers = s -> s.isActive() && s.getMonthsRemaining() <= 1;
+        List<Subscriber> activeAndExpiringSubscriber = processor.findsubscribers(subscribers, activeAndExpiringSubscribers);
+        System.out.println("------Active and expiring subscribers------");
+        for (Subscriber s: activeAndExpiringSubscriber){
+            System.out.println(s);
+        }
+
+        //4. Subscriber by plan
+
+
 
 
 
