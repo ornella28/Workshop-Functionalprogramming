@@ -93,7 +93,22 @@ public class Main {
 
         //7. Deactivate subscribers
         SubscriberAction deactivateSubscriber = s-> s.setActive(false);
+            //Expired subscribers filter
+            SubscriberFilter expiredSubscribers = s-> s.getMonthsRemaining() ==0;
+            List<Subscriber> expiredSubscriber = processor.findsubscribers(subscribers, expiredSubscribers);
+
+        //printout before deactivating
+        System.out.println("------Before deactivating subscribers------");
+        for (Subscriber s: subscribers){
+            System.out.println(s);
+        }
         //apply
+        processor.applyToMatching(subscribers, expiredSubscribers, deactivateSubscriber);
+        // printout after deactivating
+        System.out.println("------After deactivating subscribers------");
+        for(Subscriber s : subscribers){
+            System.out.println(s);
+        }
 
 
 
