@@ -67,6 +67,14 @@ public class Main {
                 System.out.println(s);
             }
 
+            //5. Paying subscribers
+        SubscriberFilter payingSubscribers = s-> s.getPlan() == Plan.Basic || s.getPlan() == Plan.Pro;
+            List<Subscriber> payingSubscriber = processor.findsubscribers(subscribers, payingSubscribers);
+            System.out.println("------Paying subscribers------");
+            for (Subscriber s: payingSubscriber){
+                System.out.println(s);
+            }
+
 
 
 
