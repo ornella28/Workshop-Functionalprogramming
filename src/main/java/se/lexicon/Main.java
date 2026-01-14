@@ -75,7 +75,18 @@ public class Main {
                 System.out.println(s);
             }
 
-            //6. Extend subscription
+            //6. Extend subscription, an action which will use SubscriberAction
+
+        SubscriberAction extendSubscription = s-> s.setMonthsRemaining(s.getMonthsRemaining() + 2);
+            // To be continued....
+
+        //7. Deactivate subscribers
+        SubscriberAction deactivateSubscriber = s-> s.setActive(false);
+        //apply
+
+
+
+
 
 
 
