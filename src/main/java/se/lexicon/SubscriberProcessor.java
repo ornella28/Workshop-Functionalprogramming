@@ -16,4 +16,17 @@ public class SubscriberProcessor {
         }
         return result;
     }
+
+    //Creating a method applyToMatching for acctions with SubscribeAction
+    public List<Subscriber> applyToMatching(List<Subscriber> list, SubscriberFilter filter, SubscriberAction action){
+        List<Subscriber> result = new ArrayList<>();
+
+        for(Subscriber s : list){
+            if(filter.matches(s)){
+                action.run(s);
+                result.add(s);
+            }
+        }
+        return result;
+    }
 }

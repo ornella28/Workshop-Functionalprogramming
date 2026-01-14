@@ -78,7 +78,18 @@ public class Main {
             //6. Extend subscription, an action which will use SubscriberAction
 
         SubscriberAction extendSubscription = s-> s.setMonthsRemaining(s.getMonthsRemaining() + 2);
-            // To be continued....
+            // printout before extending
+            System.out.println("------Before extending subscription------");
+            for (Subscriber s: subscribers){
+                System.out.println(s);
+            }
+            //apply
+            processor.applyToMatching(subscribers, activeSubscriber, extendSubscription);
+            // printout after extending
+            System.out.println("------After extending subscription------");
+            for (Subscriber s: subscribers){
+                System.out.println(s);
+            }
 
         //7. Deactivate subscribers
         SubscriberAction deactivateSubscriber = s-> s.setActive(false);
