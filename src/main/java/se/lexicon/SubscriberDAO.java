@@ -13,6 +13,21 @@ public class SubscriberDAO {
         storeSubscribers.add(subscriber);
     }
 
+    //Creating a method to get all subscribers from the list
+    public List<Subscriber> findAll(){
+        return new ArrayList<>(storeSubscribers);
+    }
+
+    //Creating a method to find a subscriber by id
+    public Subscriber findById(int id){
+        for(Subscriber s : storeSubscribers){
+            if(s.getId() == id){
+                return s;
+            }
+        }
+        return null;
+    }
+
 
 
 }
