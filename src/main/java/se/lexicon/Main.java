@@ -110,6 +110,29 @@ public class Main {
             System.out.println(s);
         }
 
+        //Creating a SubscriberDAO instance and add data to it
+        SubscriberDAO dao = new SubscriberDAO();
+
+        dao.save(new Subscriber( 1, "anna@example.com", Plan.Free, true, 10));
+        dao.save(new Subscriber( 2, "erik@example.com", Plan.Basic, true, 3));
+        dao.save(new Subscriber( 3, "omar@example.com", Plan.Pro, true, 12));
+
+        //Get all subscribers from DAO
+        List<Subscriber> allSubscribers = dao.findAll();
+        System.out.println("------All subscribers from DAO------");
+        for(Subscriber s : allSubscribers){
+            System.out.println(s);
+        }
+
+        //Find subscriber by ID
+        Subscriber subscriberById = dao.findById(2);
+        System.out.println("------Subscriber with ID 2------");
+        System.out.println(subscriberById);
+
+
+
+
+
 
 
 
