@@ -6,16 +6,27 @@ public class Main {
 
     void main() {
 
-        List<Subscriber> subscribers = List.of(
-                new Subscriber(1, "anna@example.com", Plan.Free, true, 10),
-                new Subscriber(2, "erik@example.com", Plan.Basic, true, 3),
-                new Subscriber(3, "sara@example.com", Plan.Pro, false, 0),
-                new Subscriber(4, "noah@example.com", Plan.Free, true, 1),
-                new Subscriber(5, "lina@example.com", Plan.Basic, true, 6),
-                new Subscriber(6, "omar@example.com", Plan.Pro, true, 12),
-                new Subscriber(7, "maria@example.com", Plan.Free, false, 0),
-                new Subscriber(8, "john@example.com", Plan.Basic, true, 2)
-        );
+
+
+        //Creating a SubscriberDAO instance and add data to it
+        SubscriberDAO dao = new SubscriberDAO();
+
+        dao.save(new Subscriber( 1, "anna@example.com", Plan.Free, true, 10));
+        dao.save(new Subscriber( 2, "erik@example.com", Plan.Basic, true, 3));
+        dao.save(new Subscriber( 3, "omar@example.com", Plan.Pro, true, 12));
+
+
+        //Get all subscribers from DAO
+        List<Subscriber> subscribers = dao.findAll();
+        System.out.println("------All subscribers from DAO------");
+        for(Subscriber s : subscribers){
+            System.out.println(s);
+        }
+
+        //Find subscriber by ID
+        Subscriber subscriberById = dao.findById(2);
+        System.out.println("------Subscriber with ID 2------");
+        System.out.println(subscriberById);
 
         // uSING the processor here
         SubscriberProcessor processor = new SubscriberProcessor();
@@ -110,24 +121,6 @@ public class Main {
             System.out.println(s);
         }
 
-        //Creating a SubscriberDAO instance and add data to it
-        SubscriberDAO dao = new SubscriberDAO();
-
-        dao.save(new Subscriber( 1, "anna@example.com", Plan.Free, true, 10));
-        dao.save(new Subscriber( 2, "erik@example.com", Plan.Basic, true, 3));
-        dao.save(new Subscriber( 3, "omar@example.com", Plan.Pro, true, 12));
-
-        //Get all subscribers from DAO
-        List<Subscriber> allSubscribers = dao.findAll();
-        System.out.println("------All subscribers from DAO------");
-        for(Subscriber s : allSubscribers){
-            System.out.println(s);
-        }
-
-        //Find subscriber by ID
-        Subscriber subscriberById = dao.findById(2);
-        System.out.println("------Subscriber with ID 2------");
-        System.out.println(subscriberById);
 
 
 
